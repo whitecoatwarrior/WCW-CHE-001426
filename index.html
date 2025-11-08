@@ -1,0 +1,2619 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH08_vQhw7nqJCy3igwm70zXI2Mwau8CvcIeXdZMF2dFm9bPfgWtP6En4GQZGKte7c/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_BIO_04 = [
+    {
+        question: "Which of the following best defines the science of genetics according to the provided text?",
+        options: [
+            "The study of ecological interactions and population dynamics.",
+            "The branch of biology focused on organism development and growth stages.",
+            "The science primarily concerned with the transmission of hereditary characteristics and variations among organisms.",
+            "The investigation of cellular structures and their biochemical functions."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that Genetics is defined as 'The science dealing with heredity and variation.' Option C directly reflects this definition."
+    },
+    {
+        question: "Gregor Mendel's groundbreaking work on heredity was initially neglected for a significant period. A primary reason for this oversight, as stated, was the scientific community's prevailing focus on a different major theory. Which theory superseded immediate recognition for Mendel's findings?",
+        options: [
+            "The concept of spontaneous generation.",
+            "The theory of acquired characteristics by Lamarck.",
+            "Charles Darwin's theory, published shortly before Mendel's work.",
+            "The early microbiological discoveries of Louis Pasteur."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that Mendel's work was 'unrecognized for 34 years due to biologists' preoccupation with Darwin's theory (1859).' This indicates Darwin's theory was the primary reason for neglect."
+    },
+    {
+        question: "Mendel chose *Pisum sativum* for his experiments due to several advantageous characteristics. Which characteristic, described in the text, relates to the controlled breeding possibilities in these plants?",
+        options: [
+            "They possessed an exceptionally long life cycle, allowing for prolonged observation.",
+            "They were exclusively cross-pollinating, simplifying the detection of new traits.",
+            "They exhibited a limited number of heritable traits, making analysis straightforward.",
+            "Their flowers allowed for self-pollination but also facilitated controlled cross-pollination."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that Mendel's success with pea plants was partly because they have 'Self-pollinating flowers, but cross-pollination possible.' This provides the flexibility for controlled breeding."
+    },
+    {
+        question: "In the context of Mendelian genetics, what term describes the specific location of a gene on a chromosome?",
+        options: [
+            "Centromere",
+            "Telomere",
+            "Locus",
+            "Karyotype"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Locus: The specific position of a gene on a chromosome.' This is a direct definition from the text."
+    },
+    {
+        question: "An individual possessing two identical alleles for a particular gene is described by which genetic term?",
+        options: [
+            "Heterozygous",
+            "Phenotypic",
+            "Homozygous",
+            "Dominant"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Homozygous: Having two identical alleles for a gene (e.g., RR, rr).' This directly matches the definition provided."
+    },
+    {
+        question: "The Law of Segregation, also known as the Purity of Gametes, fundamentally describes what event during meiosis regarding alleles?",
+        options: [
+            "The independent assortment of alleles from different gene pairs.",
+            "The complete dominance of one allele over another in heterozygotes.",
+            "The separation of two coexisting alleles for each trait into different gametes.",
+            "The random fusion of gametes during the fertilization process."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that the 'Law of Segregation (Purity of Gametes): The two coexisting alleles for each trait in an individual segregate (separate) from each other during meiosis, so each gamete receives only one of the two alleles.'"
+    },
+    {
+        question: "What is the primary purpose of a 'test cross' in Mendelian genetics?",
+        options: [
+            "To determine the phenotypic ratio of the F2 generation.",
+            "To establish true-breeding lines for subsequent experiments.",
+            "To ascertain the unknown genotype of an individual exhibiting a dominant phenotype.",
+            "To observe the independent assortment of two different traits simultaneously."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that a 'Test Cross' is for 'Mating an individual with a dominant phenotype (unknown genotype... ) with an individual showing the recessive phenotype (rr) to determine if the dominant individual is homozygous (RR) or heterozygous (Rr).'"
+    },
+    {
+        question: "Which of Mendel's laws is directly challenged by the phenomenon of gene linkage when genes are located very close together on the same chromosome?",
+        options: [
+            "Law of Dominance",
+            "Law of Segregation",
+            "Law of Purity of Gametes",
+            "Law of Independent Assortment"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that the 'Law of Independent Assortment' occurs because genes are either on different homologous chromosomes or far apart on the same chromosome. Gene linkage, especially close linkage, means genes do *not* assort independently, thus challenging this specific law."
+    },
+    {
+        question: "Thomas Hunt Morgan's studies on *Drosophila melanogaster* were crucial for providing experimental evidence for sex linkage. What observable trait in fruit flies allowed for his key discovery?",
+        options: [
+            "Wing shape variations.",
+            "Body color mutations.",
+            "Eye color variations.",
+            "Antenna length differences."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Morgan's *Drosophila* Eye Color Experiments' involved 'Wild type: Bright red eyes' and 'Mutant: White eyes' leading to the conclusion about X-linkage. This was the observable trait."
+    },
+    {
+        question: "A characteristic pattern of X-linked inheritance where a trait passes from a maternal grandfather to his daughter (as a carrier) and then to her son is known as:",
+        options: [
+            "Autosomal recessive inheritance.",
+            "Crisscross inheritance.",
+            "Dominant epistasis.",
+            "Maternal effect inheritance."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that 'Crisscross Inheritance: An X-linked trait passes from a maternal grandfather to his daughter (carrier) and then to her son (grandson).'"
+    },
+    {
+        question: "What defines a 'linkage group' as described in the context of gene linkage?",
+        options: [
+            "A collection of genes that independently assort during meiosis.",
+            "All genes located on non-homologous chromosomes within a cell.",
+            "All linked genes found on a single homologous pair of chromosomes.",
+            "Genes that are exclusively involved in sex determination."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Linkage Group: All linked genes on a homologous pair of chromosomes.' It also specifies that 'Number of linkage groups equals the number of homologous chromosome pairs.'"
+    },
+    {
+        question: "Crossing over is a process that occurs during meiosis. What is its primary genetic consequence, as described?",
+        options: [
+            "It ensures that offspring inherit exactly the same combination of alleles from each parent.",
+            "It prevents the formation of new combinations of alleles on a chromosome.",
+            "It involves the exchange of genetic material, creating new allele combinations and breaking linkage.",
+            "It increases the likelihood of complete linkage between all genes on a chromosome."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Crossing Over: The exchange of genetic material between homologous chromosomes during prophase I of meiosis. This breaks linkage and creates new combinations of alleles (recombinants).'"
+    },
+    {
+        question: "Haemophilia A, the most common type of this bleeding disorder, is characterized by an abnormality or deficiency of which specific clotting factor?",
+        options: [
+            "Clotting factor IX",
+            "Clotting factor XI",
+            "Clotting factor VIII",
+            "Clotting factor I (fibrinogen)"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Haemophilia A: Most common (80%). Caused by abnormality/deficiency of clotting factor VIII.' This is a direct factual recall."
+    },
+    {
+        question: "In the general mechanism of blood clotting, which protein is ultimately converted into the thin strands of solid protein known as fibrin?",
+        options: [
+            "Thrombin",
+            "Prothrombin",
+            "Fibrinogen",
+            "Collagen"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'The final step involves converting Factor I (fibrinogen, a soluble protein) into thin strands of solid protein called fibrin.'"
+    },
+    {
+        question: "If a true-breeding tall pea plant (dominant) is crossed with a true-breeding short pea plant (recessive), all offspring in the F1 generation will exhibit the tall phenotype. This observation is a direct demonstration of which Mendelian principle?",
+        options: [
+            "The Law of Independent Assortment.",
+            "The Law of Segregation.",
+            "The Law of Dominance.",
+            "The principle of co-dominance."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that the 'Law of Dominance: In a pair of contrasting traits, one factor (allele) dominates the other.' The F1 generation uniformly showing the dominant trait is the hallmark of dominance."
+    },
+    {
+        question: "Which of the following conditions must be met for a female to express an X-linked recessive trait, such as Haemophilia A?",
+        options: [
+            "She must be heterozygous for the trait.",
+            "She must possess at least one dominant allele for the trait.",
+            "She must be homozygous recessive for the trait.",
+            "She must inherit the recessive allele from her father only."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that for X-linked recessive inheritance, 'Females... Affected only if homozygous recessive (rare).' Males are affected if hemizygous, but females require two copies."
+    },
+    {
+        question: "The concept of 'Factors/Elements,' as originally proposed by Mendel, is now understood to be equivalent to which biological entity?",
+        options: [
+            "Chromosomes",
+            "Proteins",
+            "Genes/Alleles",
+            "RNA molecules"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Factors/Elements (Genes/Alleles): Hereditary information transmitted from parents to offspring.' This clarifies the modern terminology for Mendel's 'factors.'"
+    },
+    {
+        question: "In a dihybrid cross involving two unlinked genes, a phenotypic ratio of 9:3:3:1 is typically observed in the F2 generation. This specific ratio is a direct consequence of which genetic principle?",
+        options: [
+            "The blending theory of inheritance.",
+            "The Law of Segregation of alleles.",
+            "The Law of Independent Assortment of gene pairs.",
+            "The concept of complete dominance for both traits."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that the 'F2 Generation (Self-fertilization of F1)' in a dihybrid cross shows a 'Phenotypic ratio of 9:3:3:1' and links this to the 'Law of Independent Assortment' which applies when genes are unlinked."
+    },
+    {
+        question: "Why are males described as 'hemizygous' for X-linked genes?",
+        options: [
+            "They possess two X chromosomes, one from each parent.",
+            "They have identical alleles on both their X and Y chromosomes.",
+            "They express a single allele on their X chromosome, having no counterpart on the Y.",
+            "They inherit all their X-linked traits directly from their father."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state in the context of Morgan's experiments that 'Males are hemizygous (XY), expressing a single allele on their X chromosome.' This is because the Y chromosome typically lacks the corresponding gene."
+    },
+    {
+        question: "The conversion of soluble fibrinogen into solid fibrin strands is a critical final step in blood clotting. What broader category of substances initiates the cascade that culminates in this conversion?",
+        options: [
+            "Anticoagulants released by undamaged tissue.",
+            "Hemoglobin within red blood cells.",
+            "Specialized clotting factors present in the plasma.",
+            "Immune system antibodies responding to pathogens."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'These chemicals react with other chemicals and proteins in plasma, known as clotting factors. A complex series of reactions involving 13 known clotting factors... The final step involves converting Factor I (fibrinogen...) into thin strands of solid protein called fibrin.'"
+    },
+    {
+        question: "The genetic complement of an individual, representing the actual alleles possessed for a trait, is termed the:",
+        options: [
+            "Phenotype",
+            "Genotype",
+            "Karyotype",
+            "Epigenome"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that 'Genotype: The genetic complement; the actual alleles an individual possesses for a trait.'"
+    },
+    {
+        question: "If a dihybrid test cross involving two genes (A and B) yields offspring with significantly more parental combinations and fewer recombinant combinations than expected by independent assortment, what does this observation primarily suggest about the genes?",
+        options: [
+            "The genes are located on different chromosomes.",
+            "The genes are exhibiting complete dominance.",
+            "The genes are linked on the same chromosome.",
+            "There is a high frequency of crossing over between the genes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state under 'Detection of Gene Linkage' that 'Deviations from expected Mendelian ratios (e.g., 1:1:1:1 in a dihybrid test cross). More parental types and fewer recombinant types indicate linkage.' Fewer recombinants directly indicates linkage."
+    },
+    {
+        question: "Haemophilia B is identified by a deficiency or disturbance of clotting factor IX. Given its inheritance pattern, which statement about its transmission is consistent with the provided information?",
+        options: [
+            "It is an autosomal dominant disorder, affecting males and females equally.",
+            "It is an X-linked recessive disorder, making males more frequently affected than females.",
+            "It is an autosomal recessive disorder, primarily affecting individuals with two copies of the faulty allele.",
+            "It is a Y-linked disorder, passed exclusively from father to all his sons."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that 'Haemophilia B: ... Inherited as X-linked recessive.' Further, for X-linked recessive inheritance, 'Males are affected more than women because they are hemizygous for the X chromosome.'"
+    },
+    {
+        question: "A key advantage of using *Drosophila melanogaster* as a model organism in genetics, beyond its short generation time and numerous offspring, is related to its chromosomal features. What specific feature makes their chromosomes particularly easy to study?",
+        options: [
+            "Their chromosomes are exceptionally small and compact.",
+            "They possess an unusually high number of homologous chromosome pairs.",
+            "They exhibit giant chromosomes in their salivary glands.",
+            "Their chromosomes are exclusively composed of euchromatin."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that one reason for *Drosophila* as a model organism is 'Giant chromosomes in salivary glands for easy study.'"
+    },
+    {
+        question: "Regarding X-linked dominant inheritance, what pattern of transmission would be observed if an affected father has offspring?",
+        options: [
+            "All of his sons will be affected, but none of his daughters.",
+            "All of his daughters will be affected, but none of his sons.",
+            "Approximately 50% of both his sons and daughters will be affected.",
+            "Only his sons will be carriers, while daughters remain unaffected."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state for X-linked dominant inheritance: 'Affected father: All daughters affected, no sons affected.' This is a direct statement from the characteristics."
+    },
+    {
+        question: "The value of 1 map unit on a genetic map is equivalent to what frequency of recombination between two linked genes?",
+        options: [
+            "100% recombination frequency.",
+            "0.1% recombination frequency.",
+            "1% recombination frequency.",
+            "10% recombination frequency."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that '1 map unit = 1% recombination frequency.' This is a direct definition of the map unit."
+    },
+    {
+        question: "What is the consequence of complete linkage between two genes, without any crossing over occurring?",
+        options: [
+            "The genes will assort independently, following Mendelian ratios.",
+            "Only recombinant offspring types will be produced in a test cross.",
+            "Only parental offspring types will be produced, with no new combinations.",
+            "The phenotypic ratio in a dihybrid cross will be 1:1:1:1."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state under 'Detection of Gene Linkage' that 'Complete linkage shows only parental types.' This means no new combinations from recombination."
+    },
+    {
+        question: "Why is it stated that X-linked traits show 'no father-to-son transmission'?",
+        options: [
+            "Sons inherit their X chromosome exclusively from their father.",
+            "Fathers pass their Y chromosome, not their X, to their sons.",
+            "The X chromosome is completely absent in male offspring.",
+            "Only mitochondrial DNA is passed from father to son."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state for X-linked inheritance pattern: 'No Father-to-Son Transmission: A son inherits his Y chromosome from his father, not his X.' This explains why the father's X-linked traits are not directly passed to sons."
+    },
+    {
+        question: "In a monohybrid cross, the F2 generation typically displays a phenotypic ratio of 3:1. This ratio reflects which specific genotypic distribution?",
+        options: [
+            "1 homozygous dominant: 1 heterozygous: 2 homozygous recessive",
+            "2 homozygous dominant: 1 heterozygous: 1 homozygous recessive",
+            "1 homozygous dominant: 2 heterozygous: 1 homozygous recessive",
+            "3 homozygous dominant: 1 heterozygous: 0 homozygous recessive"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that for the F2 generation in a monohybrid cross, the 'Genotypic ratio of 1:2:1 (homozygous dominant:heterozygous:homozygous recessive).' This directly matches the options."
+    },
+    {
+        question: "What happens in the blood clotting mechanism immediately after a blood vessel is cut and damaged tissue is involved?",
+        options: [
+            "Fibrinogen is directly converted into fibrin strands.",
+            "Red blood cells immediately begin to form a solid plug.",
+            "Platelets become 'sticky' and clump around the cut.",
+            "Clotting factor XIII is activated to stabilize the clot."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state under 'Initial Response' that 'Cutting a blood vessel causes damaged tissue to make platelets 'sticky,' leading to clumping around the cut.'"
+    },
+    {
+        question: "Mendel's methodology involved developing 'true/pure breeding lines.' What characteristic defines such lines?",
+        options: [
+            "Organisms that always produce recombinant offspring.",
+            "Individuals that are consistently heterozygous for multiple traits.",
+            "Lines that, when self-fertilized, consistently produce offspring identical to themselves for a given trait.",
+            "Plants that can only be cross-pollinated to produce offspring."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states Mendel 'Developed true/pure breeding lines'. Implicitly, true-breeding means homozygous for the trait, which consistently yields identical offspring upon self-fertilization, ensuring consistency for experiments."
+    },
+    {
+        question: "Alleles are described as alternative forms of a gene pair. Where are these alternative forms located?",
+        options: [
+            "On non-homologous chromosomes.",
+            "At different loci on the same chromosome.",
+            "On the same locus on homologous chromosomes.",
+            "Within the cytoplasm of the cell."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Alleles: Alternative forms of a gene pair, occupying the same locus on homologous chromosomes.' This is a direct definition."
+    },
+    {
+        question: "The phenotypic ratio for the F1 generation of a monohybrid cross (e.g., RR x rr) shows what outcome?",
+        options: [
+            "All offspring exhibit the recessive phenotype.",
+            "A 3:1 ratio of dominant to recessive phenotypes.",
+            "All offspring exhibit the dominant phenotype.",
+            "A 1:2:1 ratio of genotypes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state for a monohybrid cross, 'F1 Generation: All offspring exhibit the dominant phenotype, are heterozygous (e.g., Rr).' This is the expected phenotypic outcome."
+    },
+    {
+        question: "Genetic maps, or linkage maps, were first devised by Alfred H. Sturtevant based on recombination frequencies. What is the fundamental principle used to determine distances on these maps?",
+        options: [
+            "The physical length of the chromosome segment.",
+            "The number of genes present on a given chromosome.",
+            "The rate at which genes are exchanged between homologous chromosomes.",
+            "The difference in phenotypic expression between parental and recombinant types."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Genetic Map (Linkage Map): An ordered list of genetic loci along a chromosome, where distances are determined by recombination frequencies.' The formula also confirms this directly, linking recombination frequency to distance."
+    },
+    {
+        question: "Why is the SRY gene, responsible for maleness, considered a Y-linked trait?",
+        options: [
+            "It is located on an autosome but influences sex characteristics.",
+            "It is present on both X and Y chromosomes, following autosomal rules.",
+            "It is exclusively found on the Y chromosome and passed from father to son.",
+            "Its expression is suppressed by estrogen in females."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state under Y-linked traits that 'Gene on the Y chromosome (very few known, e.g., SRY gene for maleness, passed father to son).' This confirms its location and inheritance pattern."
+    },
+    {
+        question: "Haemophilia C, unlike types A and B, follows a different inheritance pattern. Which pattern is specified for Haemophilia C?",
+        options: [
+            "X-linked recessive inheritance.",
+            "X-linked dominant inheritance.",
+            "Autosomal recessive inheritance.",
+            "Autosomal dominant inheritance."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Haemophilia C: ... Inherited as autosomal recessive.' This distinguishes it from Haemophilia A and B."
+    },
+    {
+        question: "The final solid clot in the blood clotting mechanism is primarily formed by a meshwork of which specific substance?",
+        options: [
+            "Red blood cells.",
+            "Platelets.",
+            "Fibrin strands.",
+            "Plasma proteins."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Fibrin strands form a meshwork that traps blood cells, forming a solid clot.' Fibrin is the primary structural component of the clot."
+    },
+    {
+        question: "An individual described as 'heterozygous' for a trait possesses what allelic combination?",
+        options: [
+            "Two identical alleles for the gene.",
+            "One dominant allele and one recessive allele for the gene.",
+            "Two recessive alleles for the gene.",
+            "Only one allele for the gene on a sex chromosome."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that 'Heterozygous: Having two different alleles for a gene (e.g., Rr).' This implies one dominant and one recessive when discussing contrasting traits."
+    },
+    {
+        question: "According to the text, what is the role of Desmopressin in treating mild Haemophilia A?",
+        options: [
+            "It directly replaces the deficient clotting factor IX.",
+            "It stimulates the production of factor VIII.",
+            "It converts fibrinogen into fibrin more rapidly.",
+            "It prevents platelet aggregation at the site of injury."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that 'Desmopressin: Synthetic hormone, treats mild Haemophilia A by stimulating factor VIII production.' This is its specific mechanism."
+    },
+    {
+        question: "Why would geneticists consider specific genes that are 'very close on a chromosome' to sometimes 'appear to assort independently'?",
+        options: [
+            "They are always located on different linkage groups.",
+            "Complete linkage ensures their separation during meiosis.",
+            "Frequent crossing over or multiple crossovers can obscure their linkage.",
+            "They are always dominant and thus their inheritance is straightforward."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state under 'Significance' of genetic maps that 'Genes that are very close on a chromosome may appear to assort independently if crossing over occurs frequently enough or if multiple crossovers 'cancel out' observed recombination.' This nuance is key for critical thinking."
+    },
+    {
+        question: "A biologist is studying a newly discovered trait in pea plants. When a true-breeding plant showing the dominant phenotype is crossed with a true-breeding plant showing the recessive phenotype, the F1 generation uniformly exhibits the dominant trait. This observation is MOST directly attributable to which of Mendel's insights?",
+        options: [
+            "The concept of independent assortment for multiple traits.",
+            "The understanding that alleles segregate during gamete formation.",
+            "The principle that in a pair of contrasting traits, one factor masks the other.",
+            "The revelation that gene linkage influences inheritance patterns."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Law of Dominance: In a pair of contrasting traits, one factor (allele) dominates the other.' The F1 showing only the dominant phenotype is the classic demonstration of dominance."
+    },
+    {
+        question: "Consider a case where a genetic cross deviates from the expected Mendelian ratio of 1:1:1:1 in a dihybrid test cross, showing an excess of parental types. This outcome is the primary evidence for which genetic phenomenon?",
+        options: [
+            "Epistasis between the two genes.",
+            "Lethal alleles affecting offspring viability.",
+            "Incomplete dominance causing intermediate phenotypes.",
+            "The linkage of the two genes on the same chromosome."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state under 'Detection of Gene Linkage' that 'Deviations from expected Mendelian ratios (e.g., 1:1:1:1 in a dihybrid test cross). More parental types and fewer recombinant types indicate linkage.' The excess of parental types is a direct indicator of linkage."
+    },
+    {
+        question: "A woman is a carrier for an X-linked recessive disorder. If she has a son, what is the probability that her son will be affected by this disorder?",
+        options: [
+            "0% chance.",
+            "25% chance.",
+            "50% chance.",
+            "100% chance."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state for X-linked recessive inheritance, 'Carrier female: 50% chance of passing mutation to offspring.' Since sons inherit their X from their mother, each son has a 50% chance of inheriting the mutated X and thus being affected."
+    },
+    {
+        question: "Thomas Hunt Morgan's experimental conclusion that the gene for *Drosophila* eye color is located on the X chromosome and has no counterpart on the Y chromosome was based on which key observation?",
+        options: [
+            "The F2 generation always showed a 9:3:3:1 phenotypic ratio.",
+            "All white-eyed flies in the F2 generation were observed to be male.",
+            "All F1 offspring from a white-eyed male and red-eyed female had white eyes.",
+            "The wild type red-eyed trait was found to be recessive."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state under Morgan's experiment observations: 'In F2, a 3:1 ratio of red:white eyes was observed, but all white-eyed flies were male.' This specific observation was critical for concluding X-linkage and hemizygosity in males."
+    },
+    {
+        question: "If an individual is homozygous dominant for a particular trait, what phenotype will they express?",
+        options: [
+            "The recessive phenotype.",
+            "An intermediate phenotype.",
+            "The dominant phenotype.",
+            "A mixture of dominant and recessive phenotypes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that a 'Dominant Trait/Allele: Expressed in F1 generation; represented by capital letters.' Since the individual is homozygous dominant, they possess two dominant alleles, ensuring expression of the dominant phenotype."
+    },
+    {
+        question: "The Law of Independent Assortment states that alleles of different gene pairs assort independently during gamete formation. This principle holds true under which specific condition regarding gene location?",
+        options: [
+            "When the genes are located on the same chromosome and are very close together.",
+            "Only when both gene pairs exhibit complete dominance.",
+            "When genes are located on different homologous chromosomes or are far apart on the same chromosome.",
+            "Only if the traits are essential for survival of the organism."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Alleles of different gene pairs assort independently of each other during gamete formation. This occurs because genes are either on different homologous chromosomes or far apart on the same chromosome.'"
+    },
+    {
+        question: "The comprehensive series of reactions involving 13 known clotting factors, where each reaction triggers the next, is best described as a:",
+        options: [
+            "Direct conversion process.",
+            "Competitive inhibition pathway.",
+            "Biochemical cascade.",
+            "Simple diffusion mechanism."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that the blood clotting mechanism involves 'A complex series of reactions involving 13 known clotting factors... where each reaction triggers the next,' explicitly naming it a 'Cascade'."
+    },
+    {
+        question: "What is the consequence of a single recessive allele on the X chromosome for males regarding X-linked recessive disorders?",
+        options: [
+            "It typically makes them carriers without expressing the trait.",
+            "It requires a dominant allele on the Y chromosome for expression.",
+            "It is sufficient for the trait to be expressed due to hemizygosity.",
+            "It results in an intermediate phenotype due to partial dominance."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state for X-linked recessive inheritance, 'Males: Affected if they possess one X-linked recessive mutation (hemizygous).' This explains that a single copy is enough for expression due to the absence of a second X chromosome."
+    },
+    {
+        question: "Alfred H. Sturtevant's contribution to genetics involved devising the genetic map, which orders genetic loci along a chromosome. What physical characteristic of a chromosome does this map indirectly represent through recombination frequencies?",
+        options: [
+            "The presence of telomeres and centromeres.",
+            "The linear arrangement and relative distances of genes.",
+            "The total number of homologous gene pairs.",
+            "The degree of condensation of chromatin."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that a 'Genetic Map (Linkage Map): An ordered list of genetic loci along a chromosome, where distances are determined by recombination frequencies.' This directly correlates to the linear arrangement and relative distances."
+    },
+    {
+        question: "When considering the probability of two independent genetic events occurring simultaneously, what rule applies?",
+        options: [
+            "The sum rule, where individual probabilities are added.",
+            "The difference rule, calculating the subtraction of probabilities.",
+            "The product rule, multiplying their individual probabilities.",
+            "The division rule, where probabilities are divided."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'The 'product rule' states that the joint probability of two independent events occurring simultaneously is the product of their individual probabilities.'"
+    },
+    {
+        question: "In a monohybrid cross, if the F1 generation is self-fertilized, the F2 generation will show new combinations not present in the P1 generation in terms of genotype. This reappearance of the recessive phenotype in F2 is evidence for which of Mendel's laws?",
+        options: [
+            "Law of Dominance.",
+            "Law of Independent Assortment.",
+            "Law of Segregation (Purity of Gametes).",
+            "Blending inheritance."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state for the F2 generation in a monohybrid cross, the 'Phenotypic ratio of 3:1 (dominant:recessive)' is observed. The reappearance of the recessive trait means the alleles must have separated during gamete formation in F1 and then recombined, which is the essence of the Law of Segregation."
+    },
+    {
+        question: "A novel treatment for Haemophilia A involves Octocogalfa. What is the nature of this therapeutic agent?",
+        options: [
+            "A synthetic hormone that activates existing clotting factors.",
+            "A genetically engineered purified factor VIII.",
+            "An engineered version of clotting agent IX.",
+            "A broad-spectrum anticoagulant to prevent excess clotting."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that 'Octocogalfa: Genetically engineered purified factor VIII, treats Haemophilia A.' This is a direct recall of the treatment's nature."
+    },
+    {
+        question: "The observable form or appearance of a trait, such as 'round seeds' or 'red eyes,' is referred to as the:",
+        options: [
+            "Genotype",
+            "Allele",
+            "Phenotype",
+            "Locus"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Phenotype: The observable form or appearance of a trait (e.g., round seeds, red eyes).'"
+    },
+    {
+        question: "Why did Mendel's work remain unrecognized for 34 years, besides the preoccupation with Darwin's theory?",
+        options: [
+            "His publications were primarily in obscure foreign languages.",
+            "He lacked familiarity with experimental design.",
+            "Biologists at the time were unfamiliar with statistical analysis.",
+            "His findings contradicted the existence of genes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that his work was 'unrecognized for 34 years due to biologists' preoccupation with Darwin's theory (1859), and lack of familiarity with statistical analysis.' The lack of familiarity with statistics is the secondary reason listed."
+    },
+    {
+        question: "Which of the following is NOT listed as a reason for Mendel's success with pea plants (*Pisum sativum*)?",
+        options: [
+            "Short life cycle allowing for multiple generations.",
+            "Possession of distinct contrasting heritable characters.",
+            "Their ability to undergo parthenogenesis for cloning.",
+            "Easy to grow in various conditions."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory list 'Easy to grow in pots or open ground,' 'Short life cycle,' and 'Possesses distinct contrasting heritable characters' as reasons for success. Parthenogenesis is not mentioned."
+    },
+    {
+        question: "Alleles, which are alternative forms of a gene, can be either identical or different. What are the terms used to describe these two conditions, respectively?",
+        options: [
+            "Dominant and recessive.",
+            "Homozygous and heterozygous.",
+            "Phenotypic and genotypic.",
+            "Linked and unlinked."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that alleles 'can be identical (homozygous) or different (heterozygous).' This directly answers the question."
+    },
+    {
+        question: "A recessive trait is defined by its expression under specific conditions. What is the usual requirement for a recessive trait to be expressed phenotypically, excluding cases like hemizygous males?",
+        options: [
+            "It must be present as a single allele on a sex chromosome.",
+            "It must be inherited from a homozygous dominant parent.",
+            "It requires a homozygous condition for expression.",
+            "It must be masked by a dominant allele in the F1 generation."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that a 'Recessive Trait/Allele: ... Requires homozygous condition for expression (except in hemizygous males).' This outlines the general rule for expression."
+    },
+    {
+        question: "What happens when activated platelets and damaged tissue release chemicals during the initial stages of blood clotting?",
+        options: [
+            "These chemicals directly dissolve the fibrin meshwork.",
+            "They cause red blood cells to rupture.",
+            "They react with plasma proteins, triggering the clotting factor cascade.",
+            "They initiate the production of new platelets."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state under 'Chemical Release' that 'Activated platelets and damaged tissue release chemicals. These chemicals react with other chemicals and proteins in plasma, known as clotting factors,' leading to the cascade."
+    },
+    {
+        question: "If an individual with a dominant phenotype is crossed with a homozygous recessive individual, and the offspring show a 1:1 ratio of dominant to recessive phenotypes, what can be concluded about the dominant individual's genotype?",
+        options: [
+            "It is homozygous dominant.",
+            "It is heterozygous.",
+            "It carries a lethal recessive allele.",
+            "Its genotype cannot be determined without further crosses."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state for a Test Cross: 'If heterozygous, offspring will show 1:1 ratio of dominant:recessive.' This outcome directly points to the dominant individual being heterozygous."
+    },
+    {
+        question: "The general mechanism of blood clotting involves a 'cascade' of reactions. What is the primary characteristic of this cascade?",
+        options: [
+            "A linear series of unrelated reactions.",
+            "A single, irreversible step converting fibrinogen.",
+            "A complex series where each reaction activates the next.",
+            "A process solely regulated by platelet count."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state for the 'Cascade': 'A complex series of reactions involving 13 known clotting factors (Factor I to XIII, denoted by Roman numerals), where each reaction triggers the next.' This highlights the sequential activation."
+    },
+    {
+        question: "Haemophilia, characterized by blood failing to clot properly, is fundamentally a disorder arising from a problem with:",
+        options: [
+            "Red blood cell morphology.",
+            "White blood cell count.",
+            "The reduction, malfunction, or absence of clotting factors.",
+            "Excessive platelet production."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that Haemophilia is 'A serious hereditary bleeding disorder where blood fails to clot properly due to reduction, malfunction, or complete absence of clotting factors.'"
+    },
+    {
+        question: "In the context of population genetics, how do carrier females contribute to the persistence of X-linked recessive disorders like Haemophilia A or B?",
+        options: [
+            "They directly express the disorder, increasing its prevalence.",
+            "They prevent the mutation from being passed to any offspring.",
+            "They are phenotypically normal but maintain the faulty allele in the population.",
+            "They only transmit the disorder to their daughters, never to sons."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state for X-linked recessive inheritance, 'Females are usually carriers (heterozygous) and phenotypically normal, maintaining the faulty allele in the population.' This highlights their role in perpetuating the trait without expressing it."
+    },
+    {
+        question: "What is the primary significance of new 'recombinant' phenotypes appearing in the F2 generation of a dihybrid cross that were not seen in the P1 parents?",
+        options: [
+            "It indicates that the genes are completely linked.",
+            "It contradicts the Law of Segregation.",
+            "It supports the concept of independent assortment.",
+            "It proves that lethal alleles are present."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state for a Dihybrid Cross, the F2 generation 'Also produces new 'recombinant' phenotypes not seen in parents.' This outcome is a direct consequence of the independent assortment of alleles from different gene pairs during gamete formation, leading to novel combinations."
+    },
+    {
+        question: "Thomas Hunt Morgan's work with *Drosophila* provided crucial experimental backing for the chromosomal theory of heredity. Which characteristic of *Drosophila* was particularly useful for studying this?",
+        options: [
+            "Their complex mating rituals.",
+            "Their large size, making them easy to manipulate.",
+            "Their small number of chromosomes (8 in 4 homologous pairs).",
+            "Their prolonged embryonic development."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that one reason for *Drosophila* as a model organism is 'Small number of chromosomes (8, in 4 homologous pairs).' This manageable number facilitated the study of gene location on chromosomes."
+    },
+    {
+        question: "Which term describes a trait that is controlled by alleles located specifically on the X chromosome?",
+        options: [
+            "Autosomal trait",
+            "Y-linked trait",
+            "X-Y linked trait",
+            "X-linked trait"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state under Sex Linkage: 'X-linked trait: Gene on the X chromosome.' This is a direct definition."
+    },
+    {
+        question: "Why would the direct detection of gene linkage be challenging without observing deviations from Mendelian ratios?",
+        options: [
+            "Linked genes always produce a 3:1 phenotypic ratio, indistinguishable from independent assortment of dominant/recessive traits.",
+            "Mendelian ratios are universally applicable regardless of gene location.",
+            "Deviations, such as more parental types, are the specific indicators that genes are not assorting independently.",
+            "Linkage only affects genotypic ratios, not phenotypic outcomes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state under 'Detection of Gene Linkage' that 'Deviations from expected Mendelian ratios (e.g., 1:1:1:1 in a dihybrid test cross). More parental types and fewer recombinant types indicate linkage.' The deviations are the *signal* of linkage."
+    },
+    {
+        question: "What is the primary function of fibrinogen in the blood clotting process?",
+        options: [
+            "To initiate platelet aggregation.",
+            "To act as a catalyst for other clotting factors.",
+            "To be converted into insoluble protein strands that form the clot meshwork.",
+            "To dissolve existing clots once the injury is healed."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'The final step involves converting Factor I (fibrinogen, a soluble protein) into thin strands of solid protein called fibrin.' Its function is to be the precursor to fibrin, which forms the clot."
+    },
+    {
+        question: "The concept of 'heredity and variation' forms the basis of genetics. How are these two aspects fundamentally linked?",
+        options: [
+            "Heredity ensures all offspring are identical, while variation represents errors.",
+            "Heredity is the transmission of traits, and variation refers to the differences in those transmitted traits.",
+            "Variation dictates which hereditary traits are expressed in a population.",
+            "Both heredity and variation are solely influenced by environmental factors."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory defines 'Genetics: The science dealing with heredity and variation.' Heredity is the passing of traits, and variation is the observable differences in those traits, making them two sides of the same coin in inheritance."
+    },
+    {
+        question: "A research student observes a particular genetic cross in fruit flies. They find that all female offspring express a certain trait, while no male offspring express it, even though the father exhibited the trait. This pattern is characteristic of what type of inheritance?",
+        options: [
+            "Autosomal recessive.",
+            "Y-linked.",
+            "X-linked recessive.",
+            "X-linked dominant."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states for 'X-linked Dominant Inheritance': 'Affected father: All daughters affected, no sons affected.' This precisely matches the observation, indicating an X-linked dominant pattern from the father."
+    },
+    {
+        question: "If a gene and its alleles are said to be 'sex-linked,' what does this specifically imply about their location?",
+        options: [
+            "They are found only on autosomal chromosomes.",
+            "They are located on either the X or Y chromosomes.",
+            "They are present in both sexes but expressed differently.",
+            "They are exclusively involved in reproductive development."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that 'Sex Linkage: Traits controlled by alleles on sex chromosomes (X or Y).' This specifies the chromosomal location for sex-linked genes."
+    },
+    {
+        question: "What primary effect does crossing over have on gene linkage?",
+        options: [
+            "It strengthens the linkage between genes, making them always inherit together.",
+            "It leads to a reduction in genetic variability.",
+            "It breaks existing linkages and generates new combinations of alleles.",
+            "It ensures that only parental genotypes are passed to offspring."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Crossing Over: ... This breaks linkage and creates new combinations of alleles (recombinants).' This is its primary effect."
+    },
+    {
+        question: "Why is it important that Mendel developed 'true/pure breeding lines' before performing hybridization experiments?",
+        options: [
+            "To ensure that all offspring were sterile and could not self-pollinate.",
+            "To guarantee the F1 generation would exhibit recessive traits exclusively.",
+            "To establish a baseline of known genetic purity for predictable crosses.",
+            "To prevent any potential for independent assortment in his experiments."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states Mendel 'Developed true/pure breeding lines'. This step is crucial for establishing predictable parental genotypes (e.g., RR or rr) such that the outcomes of subsequent crosses (like RR x rr) can be clearly interpreted based on Mendelian principles. Without pure lines, the initial genotypes would be uncertain, confounding the results."
+    },
+    {
+        question: "A student wants to determine if two distinct genes on the same chromosome are closely linked or relatively far apart. Which genetic calculation would provide the most direct information about their relative distance?",
+        options: [
+            "The genotypic ratio of the F2 generation in a monohybrid cross.",
+            "The recombination frequency between the two genes.",
+            "The ratio of dominant to recessive phenotypes in a test cross.",
+            "The overall percentage of heterozygotes in the F1 generation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that 'Recombination Frequency: A measure of the genetic distance between linked genes. Higher frequency indicates greater distance.' This directly links recombination frequency to genetic distance."
+    },
+    {
+        question: "If Haemophilia A is diagnosed in a male infant, and his mother is a known carrier, what can be definitively concluded about the biological father's contribution to this specific condition in the son?",
+        options: [
+            "The father must also have Haemophilia A.",
+            "The father contributed the faulty X-linked allele.",
+            "The father's genotype for Haemophilia A is irrelevant to the son's condition.",
+            "The father passed on a protective dominant allele."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state for X-linked recessive inheritance: 'No Father-to-Son Transmission: A son inherits his Y chromosome from his father, not his X.' Therefore, the father does not contribute the X chromosome carrying the Haemophilia allele to his son; the mother is the sole source of the son's X chromosome."
+    },
+    {
+        question: "The Punnett Square, a diagrammatic tool, was devised to fulfill what specific purpose in genetic analysis?",
+        options: [
+            "To visually represent the structure of chromosomes.",
+            "To analyze the biochemical pathways of gene expression.",
+            "To predict the possible outcomes and probabilities of genetic crosses.",
+            "To quantify the amount of genetic material exchanged during crossing over."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Punnett Square: A diagrammatic tool devised by R.C. Punnett to predict the outcomes of genetic crosses.' This is its defined purpose."
+    },
+    {
+        question: "Which statement accurately describes the inheritance pattern of Haemophilia A and B?",
+        options: [
+            "They are autosomal recessive disorders, equally affecting males and females.",
+            "They are X-linked recessive disorders, with males more frequently affected.",
+            "They are X-linked dominant disorders, with affected fathers passing the trait to all sons.",
+            "They are Y-linked disorders, showing only father-to-son transmission."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state under 'Inheritance Pattern of Haemophilia A & B (X-linked recessive)': 'Males are affected more than women because they are hemizygous for the X chromosome.' This matches the described pattern."
+    },
+    {
+        question: "Genes located on sex chromosomes, but specifically present on *both* the X and Y chromosomes, are referred to as:",
+        options: [
+            "Autosomal genes.",
+            "X-linked recessive genes.",
+            "Y-linked dominant genes.",
+            "X-Y linked (Pseudoautosomal) genes."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that 'X-Y linked (Pseudoautosomal genes): Genes present on both X and Y, follow autosomal inheritance patterns.' This is the specific terminology."
+    },
+    {
+        question: "Why would geneticists find the sequenced genome of *Drosophila melanogaster* to be an advantage for its use as a model organism?",
+        options: [
+            "It implies a significantly smaller genome size compared to other insects.",
+            "It allows for precise identification and study of gene locations and functions.",
+            "It indicates a lack of genetic diversity within the species.",
+            "It suggests that *Drosophila* genes are exclusively involved in eye color determination."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory lists 'Sequenced genome' as an advantage. Knowing the genome sequence allows researchers to identify genes, understand their order, predict protein products, and study gene function with high precision, making genetic studies more efficient and comprehensive."
+    },
+    {
+        question: "An individual's phenotype is a result of their genotype and environmental interactions. If an individual is described as having 'wrinkled seeds,' this refers to their:",
+        options: [
+            "Allelic combination.",
+            "Specific gene locus.",
+            "Observable physical characteristic.",
+            "Overall genetic makeup."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that 'Phenotype: The observable form or appearance of a trait (e.g., round seeds, red eyes).' 'Wrinkled seeds' is an observable characteristic."
+    },
+    {
+        question: "The process of 'hybridization' as performed by Mendel involved what type of genetic cross?",
+        options: [
+            "Self-fertilization of true-breeding lines.",
+            "Cross-fertilization between individuals with different traits.",
+            "A test cross to determine unknown genotypes.",
+            "Backcrossing F1 progeny to parental lines."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that Mendel 'performed hybridization (cross-fertilization) experiments.' Hybridization specifically refers to crossing individuals of different genetic compositions."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-WCW-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Inheritance";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-BIO-04';
+let quizData = quizData_WCW_BIO_04;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-BIO-04', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-BIO-04', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-BIO-04', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_BIO_04;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_BIO_04;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_BIO_04[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_BIO_04.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
